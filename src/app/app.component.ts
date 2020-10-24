@@ -11,12 +11,28 @@ export class AppComponent {
   onlyOdd = false;
   oddNumbers = [1, 3, 5];
   evenNumbers = [2, 4];
+  value = 100;
 
   serverElements = [
     {
       type: 'server',
       name: 'Test Server',
       content: 'Just a test!'
+    }
+  ];
+
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active'
+    },
+    {
+      name: 'Testaccount',
+      status: 'inactive'
+    },
+    {
+      name: 'Hidden Account',
+      status: 'unknown'
     }
   ];
 
@@ -42,6 +58,14 @@ export class AppComponent {
 
   onDestroyFirst() {
     this.serverElements.splice(0, 1);
+  }
+
+  onAccountAdded(newAccount: {name: string, status: string}) {
+    this.accounts.push(newAccount);
+  }
+
+  onStatusChanged(updateInfo: {id: number, newStatus: string}) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
   }
   
 }
