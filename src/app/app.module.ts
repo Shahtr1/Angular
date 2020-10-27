@@ -12,6 +12,21 @@ import { BetterHighlightDirective } from './better-highlight/better-highlight.di
 import { UnlessDirective } from './unless.directive';
 import { AccountComponent } from './account/account.component';
 import { NewAccountComponent } from './new-account/new-account.component';
+import { AccountsService } from './account.service';
+import { LoggingService } from './logging.service';
+import { HomeComponent } from './home/home.component';
+import { OtherServersComponent } from './other-servers/other-servers.component';
+import { OtherServersService } from './other-servers/other-servers.service';
+import { OtherEditServerComponent } from './other-servers/other-edit-server/other-edit-server.component';
+import { OtherServerComponent } from './other-servers/other-server/other-server.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModue } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './other-servers/other-edit-server/can-deactivate-guard.service';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +39,23 @@ import { NewAccountComponent } from './new-account/new-account.component';
     BetterHighlightDirective,
     UnlessDirective,
     AccountComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    HomeComponent,
+    OtherServersComponent,
+    OtherEditServerComponent,
+    OtherServerComponent,
+    UsersComponent,
+    UserComponent,
+    PageNotFoundComponent,
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModue
   ],
-  providers: [],
+  providers: [AccountsService, LoggingService,
+    OtherServersService, AuthService,
+    AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
